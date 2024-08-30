@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Login De Acceso
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,30 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+        <ion-card-subtitle>Ingresa tus credenciales</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-list> 
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="usuario.username" label="usuario" labelPlacement="floating" placeholder="Ingrese su usuario"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" [(ngModel)]= "usuario.password" label="Password" labelPlacement="floating" placeholder="Ingrese su contraseña"></ion-input>
+          </ion-item>
+          <ion-button fill ="outline" (click)= "validar()">Ingresar</ion-button> <br>
+          <ion-button fill="outline">Crea tu cuenta Aquí</ion-button>
+      </ion-list>
+      </ion-card-content>
+      
+    </ion-card>
   </div>
 </ion-content>
