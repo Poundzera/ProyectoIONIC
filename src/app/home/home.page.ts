@@ -18,14 +18,14 @@ export class HomePage {
 
     validar() {
       if (this.usuario.username.length >= 3) {
-        if (this.usuario.password.length == 4){
+        if (this.usuario.password.length >=4){
           let navigationExtras: NavigationExtras = {
             state: {
               username: this.usuario.username,
               password: this.usuario.password,
             },
           };
-         // this.router.navigate (['/inicio'],navigationExtras);
+        this.router.navigate (['/inicio'],navigationExtras);
         }else{
           console.log('Contraseña incorrecta');
           this.mensaje = 'Contraseña no cumple';

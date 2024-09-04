@@ -28,8 +28,13 @@
           <ion-item>
             <ion-input type="password" [(ngModel)]= "usuario.password" label="Password" labelPlacement="floating" placeholder="Ingrese su contraseña"></ion-input>
           </ion-item>
-          <ion-button fill ="outline" (click)= "validar()">Ingresar</ion-button> <br>
-          <ion-button fill="outline">Crea tu cuenta Aquí</ion-button>
+          <div>
+            <ion-button fill ="outline" (click)= "validar()">Ingresar</ion-button> <br>
+          </div>
+          <div>
+            <ion-button fill="outline">Registrarse</ion-button>
+          </div>
+          <ion-button [routerLink]="['/olvido']" fill="outline">Olvidé mi contraseña</ion-button>
       </ion-list>
       </ion-card-content>
       
