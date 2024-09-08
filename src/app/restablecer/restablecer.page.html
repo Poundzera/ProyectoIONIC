@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>restablecer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">restablecer</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Restablecer contraseña</ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-input label="Nueva contraseña" label-placement="floating" fill="solid" placeholder="Enter text"></ion-input>
+      <ion-input label="Verificar contraseña" label-placement="floating" fill="solid" placeholder="Enter text"></ion-input>
+
+      <ion-button (click)="Resetpass()">Restablecer contraseña</ion-button>
+      <ion-button [routerLink]="['/verificacion']">Volver</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Código</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">verificacion</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Digite el codigo de verificación</ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      
+
+      <ion-input label="Código" label-placement="floating" fill="solid" placeholder="Enter text"></ion-input>
+      
+      <ion-button [routerLink]="['/restablecer']">Verificar código</ion-button>
+      <ion-button [routerLink]="['/olvido']">Volver</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -5,9 +5,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Olvido</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Login</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-card-content>
+      <ion-input label="Nombre de usuario" label-placement="floating" fill="solid" placeholder=""></ion-input>
+
+<br />
+
+<ion-input label="Correo electrónico vinculado a la cuenta" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+
+<ion-button [routerLink]="['/verificacion']">Enviar código de verificación</ion-button>
+<ion-button [routerLink]="['/home']">Volver</ion-button>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>
