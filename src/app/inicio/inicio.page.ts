@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-
-  constructor() { }
-
-  
+  username = '';
+  constructor(private router: Router) {
+    const navegacion = this.router.getCurrentNavigation();
+    const state = navegacion?.extras.state as {
+      username: '';
+   };
+   this.username = state.username;
+  }
   ngOnInit() {
   }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +9,17 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private animationController: AnimationController) {}
 
     usuario = {
       username :"",
       password :"",
     }
     mensaje ="";
-
+    spinner = false;
+    cambiarSpinner() {
+      this.spinner = !this.spinner;
+    }
     validar() {
       if (this.usuario.username.length >= 3) {
         if (this.usuario.password.length >=4){
@@ -25,7 +29,13 @@ export class HomePage {
               password: this.usuario.password,
             },
           };
-        this.router.navigate (['/inicio'],navigationExtras);
+          this.cambiarSpinner();
+          setTimeout(() => {
+
+            this.router.navigate(['/inicio'], navigationExtras);
+            this.cambiarSpinner();
+            this.mensaje = "";
+          }, 2000);
         }else{
           console.log('Contraseña incorrecta');
           this.mensaje = 'Contraseña no cumple';
