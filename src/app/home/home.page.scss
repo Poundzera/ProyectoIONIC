@@ -33,3 +33,10 @@
   padding-top: 5px;
   padding-bottom: 15px;
 }
+#container .login img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
