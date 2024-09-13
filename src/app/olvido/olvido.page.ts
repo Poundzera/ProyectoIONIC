@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-olvido',
   templateUrl: './olvido.page.html',
@@ -12,4 +11,5 @@ export class OlvidoPage implements OnInit {
   ngOnInit() {
   }
 
+  
 }
