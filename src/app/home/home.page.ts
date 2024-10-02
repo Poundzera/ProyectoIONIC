@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
+import { AuthenticatorService } from '../Servicios/authenticator.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { AnimationController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private router: Router, private animationController: AnimationController) {}
+  constructor(private router: Router, private animationController: AnimationController,
+              private auth: AuthenticatorService) {}
 
     usuario = {
       username :"",
@@ -21,8 +23,8 @@ export class HomePage {
       this.spinner = !this.spinner;
     }
     validar() {
-      if (this.usuario.username.length >= 3) {
-        if (this.usuario.password.length >=4){
+      if (this.auth.login(this.usuario.username, this.usuario.password)) {
+        this.mensaje = 'Conexion exitosa';
           let navigationExtras: NavigationExtras = {
             state: {
               username: this.usuario.username,
@@ -37,14 +39,9 @@ export class HomePage {
             this.mensaje = "";
           }, 2000);
         }else{
-          console.log('Contraseña incorrecta');
-          this.mensaje = 'Contraseña no cumple';
+          this.mensaje = 'Error en las credenciales';
         }
       
-      }else{
-        console.log('Usuario incorrecto');
-        this.mensaje = 'Usuario no cumple';
-      }
     }
 
 }

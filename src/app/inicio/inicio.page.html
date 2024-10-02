@@ -3,6 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end"></ion-buttons>
+      <ion-button (click)="logout()" fill="clear">
+        Desconectar
+      </ion-button>
+    </ion-buttons>
     <ion-title><h1 style="text-align: center;" class="text-blue"> Bienvenido {{username}}</h1></ion-title>
   </ion-toolbar>
 </ion-header>
