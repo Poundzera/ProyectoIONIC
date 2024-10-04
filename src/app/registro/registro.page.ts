@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../Servicios/storage.service';
+import { AuthenticatorService } from '../Servicios/authenticator.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -14,15 +16,26 @@ export class RegistroPage implements OnInit {
     email: "",
     password: ""
   }
-  constructor(private storage: StorageService, private router: Router) { }
+  constructor(private alertController: AlertController, private router: Router, private auth: AuthenticatorService) { }
 
   ngOnInit() {
   }
-  /*
+  
   registrar() {
-    console.log(this.usuario)
-    this.storage.set(this.usuario.username, this.usuario);
-    this.router.navigate(['/home'])
+    this.auth.registrar(this.usuario);
+    const alerta = await this.alertController.create({
+      header: 'Éxito',
+      message: 'Se registró correctamente.',
+      buttons: ['OK']
+    });
+
+    await alerta.present();
+
+
+    alerta.onDidDismiss().then(() => {
+      this.router.navigate(['/home']);
+    });
   }
-  */
+  
+  
 }

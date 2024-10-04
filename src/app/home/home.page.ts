@@ -23,7 +23,7 @@ export class HomePage {
       this.spinner = !this.spinner;
     }
     validar() {
-      if (this.auth.login(this.usuario.username, this.usuario.password)) {
+      if (this.auth.loginBDD(this.usuario.username, this.usuario.password)) {
         this.mensaje = 'Conexion exitosa';
           let navigationExtras: NavigationExtras = {
             state: {
