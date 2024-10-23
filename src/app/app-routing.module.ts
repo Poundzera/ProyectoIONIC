@@ -34,9 +34,15 @@ const routes: Routes = [
     loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule)
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
   },
+
+
 
 
 

@@ -18,11 +18,11 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
   }
-  /*
+  
   registrar() {
     console.log(this.usuario)
     this.storage.set(this.usuario.username, this.usuario);
     this.router.navigate(['/home'])
   }
-  */
+  
 }

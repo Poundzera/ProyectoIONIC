@@ -23,25 +23,27 @@ export class HomePage {
       this.spinner = !this.spinner;
     }
     validar() {
-      if (this.auth.login(this.usuario.username, this.usuario.password)) {
+        this.auth
+        .loginBDD(this.usuario.username, this.usuario.password)
+        .then((res) => {
         this.mensaje = 'Conexion exitosa';
-          let navigationExtras: NavigationExtras = {
-            state: {
-              username: this.usuario.username,
-              password: this.usuario.password,
-            },
-          };
+        let navigationExtras: NavigationExtras = {
+          state: {
+            username: this.usuario.username,
+            password: this.usuario.password,
+          },
+        };
+        this.cambiarSpinner();
+        setTimeout(() => {
+          this.router.navigate(['/inicio'], navigationExtras);
           this.cambiarSpinner();
-          setTimeout(() => {
-
-            this.router.navigate(['/inicio'], navigationExtras);
-            this.cambiarSpinner();
-            this.mensaje = "";
-          }, 2000);
-        }else{
-          this.mensaje = 'Error en las credenciales';
-        }
-      
+          this.mensaje = '';
+        }, 2000);
+      })
+      .catch((error) => {
+        this.mensaje = 'Error en las credenciales';
+      });
+  
     }
 
 }
