@@ -33,5 +33,4 @@ export class StorageService {
     await this.BDDConectada()
     this.bdd.remove(key);
   }
-  
 }
