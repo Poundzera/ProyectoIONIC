@@ -26,8 +26,10 @@ export class AdminPage implements OnInit {
       });
   }
   modificarUsuario(id: any) {
+
   }
 
   eliminarUsuario(id: any) {
+    
   }
 }
