@@ -10,7 +10,7 @@ export class AuthenticatorService {
   constructor(private storage: StorageService) { 
     this.connectionStatus = false;
   }
-  loginBDD(usuario: string, password: String): Promise<boolean> {
+  loginBDD(usuario: string, password: string): Promise<boolean> {
      return this.storage
       .get(usuario)
       .then((res) => {

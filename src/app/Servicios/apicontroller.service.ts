@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApicontrollerService {
 
-  apiURL = "http://localhost:8100";
+  apiURL = "http://localhost:3000";
   constructor(private http: HttpClient) {}
 
   getUsuarios(): Observable<any> {
@@ -19,7 +19,7 @@ export class ApicontrollerService {
   }
 
   updateUsuario(id: string, data: any): Observable<any> {
-    return this.http.put(this.apiURL + "/usuarios/" + id, data);
+    return this.http.put(this.apiURL + "/usuarios" + id, data);
   }
 
   deleteUsuario(id: string): Observable<any> {
