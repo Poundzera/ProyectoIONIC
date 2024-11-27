@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { QrPageRoutingModule } from './qr-routing.module';
 import { QrPage } from './qr.page';
 
-// Importa el módulo de la librería ng-qrcode
+
 import { QrCodeModule } from 'ng-qrcode';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { QrCodeModule } from 'ng-qrcode';
     FormsModule,
     IonicModule,
     QrPageRoutingModule,
-    QrCodeModule // Asegúrate de incluir la librería aquí
+    QrCodeModule 
   ],
   declarations: [QrPage]
 })

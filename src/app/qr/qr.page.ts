@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./qr.page.scss'],
 })
 export class QrPage {
-  textQR: string = ''; // Variable para almacenar el texto del QR
+  textQR: string = ''; 
 
   generarQRCode() {
     if (this.textQR.trim()) {
