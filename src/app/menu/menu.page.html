@@ -21,16 +21,10 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" color="secondary" (click)="startScan()">
+        <ion-button expand="block" color="secondary" (click)="openScanner()">
           Escanear QR
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-item class="result" *ngIf="scanResult" lines="none">
-      <ion-label>
-        <p>Resultado del Escaneo</p>
-        <div>{{scanResult}}</div>
-      </ion-label>
-    </ion-item>
   </ion-grid>
 </ion-content>

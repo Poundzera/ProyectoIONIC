@@ -35,7 +35,7 @@ export class HomePage {
         };
         this.cambiarSpinner();
         setTimeout(() => {
-          this.router.navigate(['/inicio'], navigationExtras);
+          this.router.navigate(['/menu'], navigationExtras);
           this.cambiarSpinner();
           this.mensaje = '';
         }, 2000);

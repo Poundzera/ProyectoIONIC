@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApicontrollerService {
 
-  apiURL = "http://localhost:3000";
+  apiURL = "https://nr0bg7lg-3000.brs.devtunnels.ms";
   constructor(private http: HttpClient) {}
 
   getUsuarios(): Observable<any> {

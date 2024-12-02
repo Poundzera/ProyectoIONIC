@@ -1,58 +1,63 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalController, Platform, LoadingController } from '@ionic/angular';
-import { LensFacing } from '@capacitor-mlkit/barcode-scanning';
-import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component'; 
+import { Component } from '@angular/core';
+import { ModalController, AlertController } from '@ionic/angular';
+import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
   styleUrls: ['./menu.page.scss'],
 })
-export class MenuPage implements OnInit {
-
-  qrText = '';
-
-  scanResult= '';
-   
-   constructor(
+export class MenuPage {
+  constructor(
     private modalController: ModalController,
-    private platform: Platform,
-    private router:Router
+    private alertController: AlertController,
+    private router: Router
   ) {}
 
-  ngOnInit(): void {
-    if(this.platform.is('capacitor')){
-      BarcodeScanner.isSupported().then();
-      BarcodeScanner.checkPermissions().then();
-      BarcodeScanner.removeAllListeners()
+  async openScanner(): Promise<void> {
+    
+    const hasPermission = await this.requestCameraPermission();
+    if (!hasPermission) {
+      this.showPermissionAlert();
+      return;
     }
-  }
 
-  async startScan() {
     
     const modal = await this.modalController.create({
-      component: BarcodeScanningModalComponent, 
-      cssClass:'barcode-scanning-modal',
-      showBackdrop:false,
+      component: BarcodeScanningModalComponent,
       componentProps: {
-        formats: ['QR_CODE'], 
-        lensFacing: LensFacing.Back, 
+        formats: ['QR_CODE', 'EAN_13'], 
+        lensFacing: 'back', 
       },
+      cssClass: 'barcode-scanning-modal',
     });
 
-    
+    modal.onDidDismiss().then((result) => {
+      if (result.data && result.data.barcode) {
+        console.log('Código escaneado:', result.data.barcode.rawValue);
+        
+      }
+    });
+
     await modal.present();
+  }
 
-    
-    const { data } = await modal.onWillDismiss();
+  
+  private async requestCameraPermission(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
 
-
-    if (data){
-      this.scanResult=data?.barcode?.displayValue;
-    }
+  
+  private async showPermissionAlert(): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Permiso denegado',
+      message: 'Se necesita el permiso de cámara para usar el escáner de códigos.',
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
   navigateToQR() {
     this.router.navigate(['/qr']);
